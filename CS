@@ -1,12 +1,5 @@
 #! /bin/bash
 
-# если скрипт существует то просто запускаем скрипт
-# иначе создаем директорию для скрипта, скрипт, и similink
-
-# базовая директория
-dir_basic=/home/vitaliy/scripts
-cd $dir_basic
-
 # проверяем на наличие аргумента
 # если нет аргумента запрашиваем его
 # аргумент - имя скрипта
@@ -16,8 +9,16 @@ if [ $1 ];then
         read -r -p "Enter name script: " nameFile
 fi
 
+# если скрипт существует то открываем скрипт для редактирования
+# иначе создаем директорию для скрипта, скрипт, и similink
+
+# базовая директория
+dir_basic=/home/vitaliy/scripts
+dir_for_script=$dir_basic/scripts_directory
+cd $dir_for_script
+
 # директория для скрипта (appointment-назначение)
-dir_appointment=$dir_basic/$nameFile 
+dir_appointment=$dir_for_script/$nameFile 
 
 # проверка на наличие директории/файла с таким именем 
 if [ ! -e $nameFile ];then
@@ -33,9 +34,9 @@ if [ ! -e $nameFile ];then
     ln -s $dir_appointment/$nameFile.sh
     
     # Открываем файл скрипта
-    vim $dir_basic/$nameFile.sh
+    vim $nameFile.sh
 else
     # Открываем файл скрипта
-    vim $dir_basic/$nameFile
+    vim $dir_basic/$nameFile.sh
 fi
 
