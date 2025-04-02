@@ -24,17 +24,17 @@ if [ ! -e $nameFile ];then
     cd $dir_appointment
 
     # создаем файл с shebang и даем права на запуск
-    echo "#! /bin/bash" > $nameFile.sh
-    chmod +x $nameFile.sh
+    echo "#! /bin/bash" > $nameFile
+    chmod +x $nameFile
 
     # переходим в базовую директорию и создаем similink на файл
     cd $dir_basic
-    ln -s $dir_appointment/$nameFile.sh
+    ln -s $dir_appointment/$nameFile
     
     # Открываем файл скрипта
-    vim $nameFile.sh
+    vim $nameFile
 else
     # Открываем файл скрипта
-    vim $dir_basic/$nameFile.sh
+    vim $dir_basic/$nameFile
 fi
 
