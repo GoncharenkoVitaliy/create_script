@@ -3,18 +3,16 @@
 # проверяем на наличие аргумента
 # если нет аргумента запрашиваем его
 # аргумент - имя скрипта
-if [ $1 ];then
-        nameFile=$1
-    else
-        read -r -p "Enter name script: " nameFile
-fi
+[ $1 ] && nameFile=$1 || read -r -p "Enter name script: " nameFile
 
 # если скрипт существует то открываем скрипт для редактирования
 # иначе создаем директорию для скрипта, скрипт, и similink
 
-# базовая директория
+# директория для запуска скриптов $PATH
 dir_basic=/home/vitaliy/scripts
+# директория для сохранения скриптов
 dir_for_script=$dir_basic/scripts_directory
+
 cd $dir_for_script
 
 # директория для скрипта (appointment-назначение)
