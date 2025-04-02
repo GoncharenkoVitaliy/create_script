@@ -10,16 +10,13 @@
 
 # директория для запуска скриптов $PATH
 dir_basic=/home/vitaliy/scripts
-# директория для сохранения скриптов
-dir_for_script=$dir_basic/scripts_directory
-
-cd $dir_for_script
-
 # директория для скрипта (appointment-назначение)
-dir_appointment=$dir_for_script/$nameFile 
+dir_appointment=$dir_basic/scripts_directory/$nameFile 
 
-# проверка на наличие директории/файла с таким именем 
-if [ ! -e $nameFile ];then
+cd $dir_basic
+
+# проверка на наличие ссылки на скрипт с таким именем 
+if [ ! -L $nameFile ];then
     mkdir -p $dir_appointment
     cd $dir_appointment
 
@@ -35,6 +32,6 @@ if [ ! -e $nameFile ];then
     vim $nameFile
 else
     # Открываем файл скрипта
-    vim $dir_basic/$nameFile
+    vim $nameFile
 fi
 
