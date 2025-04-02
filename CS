@@ -1,0 +1,17 @@
+#! /bin/bash
+
+cd /home/vitaliy/scripts
+
+if [ $1 ];then
+        nameFile=$1
+    else
+        echo -n "Enter name script: "
+	read nameFile
+fi
+
+if [ ! -f $nameFile ];then
+    echo "#! /bin/bash" > $nameFile
+    chmod +x $nameFile
+fi
+
+vim $nameFile
