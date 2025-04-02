@@ -15,19 +15,17 @@ if [ $1 ];then
     else
         read -r -p "Enter name script: " nameFile
 fi
-# =================================
 
 # директория для скрипта (appointment-назначение)
 dir_appointment=$dir_basic/$nameFile 
 
-# проверка на наличие директории с таким именем 
+# проверка на наличие директории/файла с таким именем 
 if [ ! -e $nameFile ];then
     mkdir -p $dir_appointment
     cd $dir_appointment
 
     # создаем файл с shebang и даем права на запуск
     echo "#! /bin/bash" > $nameFile.sh
-    echo "$0" >> $nameFile.sh
     chmod +x $nameFile.sh
 
     # переходим в базовую директорию и создаем similink на файл
